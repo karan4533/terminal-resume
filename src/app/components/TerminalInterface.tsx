@@ -599,28 +599,40 @@ const TerminalInterface: React.FC = () => {
         ))}
         
         {/* Current input line with blinking cursor */}
-        <div className="flex items-start">
+        <div className="flex items-start relative">
           <span className="text-[var(--prompt-color)]">{prompt}</span>
           <div className="ml-2 text-[var(--command-color)] relative min-h-[1.5rem] flex-grow">
+            {/* Render the input value and blinking cursor */}
             {inputValue.slice(0, cursorPosition)}
             <span className="w-2 h-5 bg-white inline-block animate-pulse absolute"></span>
             {inputValue.slice(cursorPosition)}
+            {/* Overlay the real input */}
+            <input
+              ref={inputRef}
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              autoFocus
+              aria-label="Terminal input"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                opacity: 0,
+                color: "transparent",
+                background: "transparent",
+                caretColor: "white", // Show caret
+                direction: "ltr",
+                unicodeBidi: "plaintext",
+              }}
+              className="outline-none"
+            />
           </div>
         </div>
       </div>
-      
-      {/* Hidden input field for keyboard interaction */}
-      <input
-        ref={inputRef}
-        type="text"
-        className="opacity-0 absolute top-0 left-0 h-0 w-0"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        autoFocus
-        aria-label="Terminal input"
-        style={{ direction: "ltr", unicodeBidi: "plaintext" }}
-      />
     </div>
   );
 };
