@@ -619,6 +619,7 @@ const TerminalInterface: React.FC = () => {
         onKeyDown={handleKeyDown}
         autoFocus
         aria-label="Terminal input"
+        style={{ direction: "ltr", unicodeBidi: "plaintext" }}
       />
     </div>
   );
