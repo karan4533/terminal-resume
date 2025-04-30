@@ -21,7 +21,6 @@ An interactive terminal-style resume built with Next.js that allows users to exp
 
 Edit the data in `src/app/data.ts` to include your own information:
 - Personal details
-- Experience
 - Education
 - Skills
 - Projects
@@ -33,7 +32,6 @@ Edit the data in `src/app/data.ts` to include your own information:
 - `about` - Show basic information
 - `contact` - Display contact information
 - `summary` - Show professional summary
-- `experience` - List work experience
 - `education` - Show educational background
 - `skills` - List technical and soft skills
 - `projects` - Show project portfolio
