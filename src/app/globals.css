@@ -1,9 +1,11 @@
-@tailwind base;
-@tailwind components;
-
-/* Import monospace fonts */
+/* 
+ * IMPORTANT: @import rules must come before any other CSS rules to comply with CSS specification.
+ * This includes @tailwind directives which expand to normal CSS rules during processing.
+ */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 :root {
   /* Terminal colors */
