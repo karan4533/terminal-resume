@@ -402,7 +402,7 @@ const TerminalInterface: React.FC = () => {
           output: (
             <div>
               <h1 className="text-2xl font-bold text-[var(--prompt-color)] mb-2">
-                Welcome to {resumeData.name}'s Terminal Resume
+                Welcome to {resumeData.name} Terminal Resume
               </h1>
               <p className="mb-4">
                 Type <span className="text-[var(--prompt-color)]">help</span> to see available commands.

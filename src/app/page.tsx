@@ -21,7 +21,7 @@ export default function Home() {
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
-                alert('GitHub repository link will be added here');
+                alert('https://github.com/karan4533/terminal-resume');
               }}
               className="text-[var(--prompt-color)] hover:underline"
             >
