@@ -1,72 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback, KeyboardEvent } from 'react';
-// Sample resume data - you can replace this with your actual data from a file
-const resumeData = {
-  name: "Developer Name",
-  title: "Software Engineer",
-  about: "A passionate developer specializing in web technologies and GPU-accelerated interfaces.",
-  experience: [
-    {
-      company: "Tech Solutions Inc.",
-      position: "Senior Developer",
-      period: "2023-Present",
-      description: "Building high-performance web applications with modern technologies."
-    },
-    {
-      company: "Creative Software",
-      position: "Frontend Developer",
-      period: "2020-2023",
-      description: "Developed responsive web interfaces and interactive data visualizations."
-    }
-  ],
-  education: [
-    {
-      institution: "University of Technology",
-      degree: "MS in Computer Science",
-      period: "2018-2020"
-    },
-    {
-      institution: "College of Engineering",
-      degree: "BS in Software Engineering",
-      period: "2014-2018"
-    }
-  ],
-  skills: {
-    languages: ["Rust", "TypeScript", "JavaScript", "Python", "C++"],
-    frontend: ["React", "WebGL", "WebGPU", "Next.js"],
-    backend: ["Node.js", "Express", "GraphQL"],
-    other: ["WebAssembly", "GPU Programming", "System Architecture"]
-  },
-  projects: [
-    {
-      name: "GPU-Accelerated Terminal",
-      description: "A terminal UI renderer using Rust and WebGL for high-performance text rendering."
-    },
-    {
-      name: "Data Visualization Platform",
-      description: "Interactive data visualization tools using WebGL for hardware-accelerated graphics."
-    }
-  ],
-  contact: {
-    email: "developer@example.com",
-    github: "github.com/developer",
-    linkedin: "linkedin.com/in/developer"
-  }
-};
-
-// Define available commands
-const availableCommands = [
-  { command: "help", description: "Show help message" },
-  { command: "about", description: "About me" },
-  { command: "experience", description: "View my work experience" },
-  { command: "education", description: "View my education" },
-  { command: "skills", description: "List my technical skills" },
-  { command: "projects", description: "View my projects" },
-  { command: "contact", description: "View contact information" },
-  { command: "clear", description: "Clear the terminal" },
-  { command: "render", description: "Information about this interface" } // Special command to display info about the renderer
-];
+import { resumeData, availableCommands } from '../data';
 
 // Command output type
 interface CommandEntry {
@@ -118,7 +53,17 @@ const OutputContent: React.FC<{
     return (
       <div>
         <p className="text-yellow-500 font-bold">About:</p>
-        <p className="mt-1">{resumeData.about}</p>
+        <div className="mt-2">
+          <p className="font-bold">{resumeData.name}</p>
+          <p>{resumeData.title}</p>
+        </div>
+      </div>
+    );
+  } else if (cmd === 'summary') {
+    return (
+      <div>
+        <p className="text-yellow-500 font-bold">Professional Summary:</p>
+        <p className="mt-1">{resumeData.summary}</p>
       </div>
     );
   } else if (cmd === 'experience') {
@@ -129,8 +74,12 @@ const OutputContent: React.FC<{
           {resumeData.experience.map((exp, index) => (
             <li key={index}>
               <div className="font-bold">{exp.position} at {exp.company}</div>
-              <div className="text-gray-400">{exp.period}</div>
-              <div className="mt-1">{exp.description}</div>
+              <div className="text-gray-400">{exp.duration}</div>
+              <div className="mt-1">
+                {exp.description.map((desc, i) => (
+                  <p key={i} className="mt-1">{desc}</p>
+                ))}
+              </div>
             </li>
           ))}
         </ul>
@@ -143,8 +92,9 @@ const OutputContent: React.FC<{
         <ul className="pl-4 mt-1 space-y-2">
           {resumeData.education.map((edu, index) => (
             <li key={index}>
-              <div className="font-bold">{edu.degree}</div>
-              <div>{edu.institution} ({edu.period})</div>
+              <div className="font-bold">{edu.degree} in {edu.field}</div>
+              <div>{edu.institution} ({edu.year})</div>
+              {edu.gpa && <div>GPA: {edu.gpa}</div>}
             </li>
           ))}
         </ul>
@@ -177,6 +127,39 @@ const OutputContent: React.FC<{
             <li key={index}>
               <div className="font-bold">{project.name}</div>
               <div className="mt-1">{project.description}</div>
+              <div className="mt-1">
+                <span className="text-gray-400">Technologies:</span>{' '}
+                {project.technologies.join(', ')}
+              </div>
+              {project.link && (
+                <div className="mt-1">
+                  <span className="text-gray-400">Link:</span>{' '}
+                  <a href={`https://${project.link}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                    {project.link}
+                  </a>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  } else if (cmd === 'certificates' || cmd === 'certifications') {
+    return (
+      <div>
+        <p className="text-yellow-500 font-bold">Certifications:</p>
+        <ul className="pl-4 mt-1 space-y-2">
+          {resumeData.certificates.map((cert, index) => (
+            <li key={index}>
+              <div className="font-bold">{cert.name}</div>
+              <div className="text-gray-400">Issued by: {cert.issuer} ({cert.date})</div>
+              {cert.link && (
+                <div className="mt-1">
+                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                    View Certificate
+                  </a>
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -186,21 +169,196 @@ const OutputContent: React.FC<{
     return (
       <div>
         <p className="text-yellow-500 font-bold">Contact Information:</p>
-        <ul className="pl-4 mt-1">
-          <li>Email: {resumeData.contact.email}</li>
-          <li>GitHub: {resumeData.contact.github}</li>
-          <li>LinkedIn: {resumeData.contact.linkedin}</li>
+        <ul className="pl-4 mt-2 space-y-1">
+          <li>
+            <span className="text-gray-400">Email:</span>{' '}
+            <a href={`mailto:${resumeData.contact.email}`} className="text-blue-400 hover:underline">
+              {resumeData.contact.email}
+            </a>
+          </li>
+          <li>
+            <span className="text-gray-400">Phone:</span>{' '}
+            {resumeData.contact.phone}
+          </li>
+          <li>
+            <span className="text-gray-400">Location:</span>{' '}
+            {resumeData.contact.location}
+          </li>
+          {resumeData.contact.linkedin && (
+            <li>
+              <span className="text-gray-400">LinkedIn:</span>{' '}
+              <a href={`https://${resumeData.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                {resumeData.contact.linkedin}
+              </a>
+            </li>
+          )}
+          {resumeData.contact.github && (
+            <li>
+              <span className="text-gray-400">GitHub:</span>{' '}
+              <a href={`https://${resumeData.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                {resumeData.contact.github}
+              </a>
+            </li>
+          )}
+          {resumeData.contact.website && (
+            <li>
+              <span className="text-gray-400">Website:</span>{' '}
+              <a href={`https://${resumeData.contact.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                {resumeData.contact.website}
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     );
-  } else if (cmd === 'render') {
+  } else if (cmd === 'all') {
     return (
-      <div>
-        <p className="text-yellow-500 font-bold">About This Terminal:</p>
-        <p className="mt-1">
-          This is a React-based terminal interface that simulates a command line experience.
-          It's built with Next.js and styled with Tailwind CSS.
-        </p>
+      <div className="space-y-6">
+        {/* About */}
+        <div>
+          <p className="text-yellow-500 font-bold text-lg">About:</p>
+          <div className="mt-2">
+            <p className="font-bold text-xl">{resumeData.name}</p>
+            <p className="text-lg">{resumeData.title}</p>
+          </div>
+        </div>
+        
+        {/* Summary */}
+        <div>
+          <p className="text-yellow-500 font-bold">Professional Summary:</p>
+          <p className="mt-1">{resumeData.summary}</p>
+        </div>
+        
+        {/* Contact */}
+        <div>
+          <p className="text-yellow-500 font-bold">Contact Information:</p>
+          <ul className="pl-4 mt-2 space-y-1">
+            <li>
+              <span className="text-gray-400">Email:</span>{' '}
+              <a href={`mailto:${resumeData.contact.email}`} className="text-blue-400 hover:underline">
+                {resumeData.contact.email}
+              </a>
+            </li>
+            <li>
+              <span className="text-gray-400">Phone:</span>{' '}
+              {resumeData.contact.phone}
+            </li>
+            <li>
+              <span className="text-gray-400">Location:</span>{' '}
+              {resumeData.contact.location}
+            </li>
+            {resumeData.contact.linkedin && (
+              <li>
+                <span className="text-gray-400">LinkedIn:</span>{' '}
+                <a href={`https://${resumeData.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                  {resumeData.contact.linkedin}
+                </a>
+              </li>
+            )}
+            {resumeData.contact.github && (
+              <li>
+                <span className="text-gray-400">GitHub:</span>{' '}
+                <a href={`https://${resumeData.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                  {resumeData.contact.github}
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
+        
+        {/* Experience */}
+        <div>
+          <p className="text-yellow-500 font-bold">Work Experience:</p>
+          <ul className="pl-4 mt-1 space-y-2">
+            {resumeData.experience.map((exp, index) => (
+              <li key={index}>
+                <div className="font-bold">{exp.position} at {exp.company}</div>
+                <div className="text-gray-400">{exp.duration}</div>
+                <div className="mt-1">
+                  {exp.description.map((desc, i) => (
+                    <p key={i} className="mt-1">{desc}</p>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Education */}
+        <div>
+          <p className="text-yellow-500 font-bold">Education:</p>
+          <ul className="pl-4 mt-1 space-y-2">
+            {resumeData.education.map((edu, index) => (
+              <li key={index}>
+                <div className="font-bold">{edu.degree} in {edu.field}</div>
+                <div>{edu.institution} ({edu.year})</div>
+                {edu.gpa && <div>GPA: {edu.gpa}</div>}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Skills */}
+        <div>
+          <p className="text-yellow-500 font-bold">Skills:</p>
+          {Object.entries(resumeData.skills).map(([category, skills], index) => (
+            <div key={index} className="mt-2">
+              <p className="capitalize font-bold">{category}:</p>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {Array.isArray(skills) && skills.map((skill, idx) => (
+                  <span key={idx} className="bg-gray-800 px-2 py-1 rounded text-blue-400">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Projects */}
+        <div>
+          <p className="text-yellow-500 font-bold">Projects:</p>
+          <ul className="pl-4 mt-1 space-y-2">
+            {resumeData.projects.map((project, index) => (
+              <li key={index}>
+                <div className="font-bold">{project.name}</div>
+                <div className="mt-1">{project.description}</div>
+                <div className="mt-1">
+                  <span className="text-gray-400">Technologies:</span>{' '}
+                  {project.technologies.join(', ')}
+                </div>
+                {project.link && (
+                  <div className="mt-1">
+                    <span className="text-gray-400">Link:</span>{' '}
+                    <a href={`https://${project.link}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                      {project.link}
+                    </a>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Certificates */}
+        <div>
+          <p className="text-yellow-500 font-bold">Certifications:</p>
+          <ul className="pl-4 mt-1 space-y-2">
+            {resumeData.certificates.map((cert, index) => (
+              <li key={index}>
+                <div className="font-bold">{cert.name}</div>
+                <div className="text-gray-400">Issued by: {cert.issuer} ({cert.date})</div>
+                {cert.link && (
+                  <div className="mt-1">
+                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                      View Certificate
+                    </a>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   } else {
