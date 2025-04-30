@@ -46,8 +46,6 @@ export const OutputContent: React.FC<OutputContentProps> = ({ resumeData, comman
       return <ContactOutput resumeData={resumeData} />;
     case 'summary':
       return <SummaryOutput resumeData={resumeData} />;
-    case 'experience':
-      return <ExperienceOutput resumeData={resumeData} />;
     case 'education':
       return <EducationOutput resumeData={resumeData} />;
     case 'skills':
@@ -74,7 +72,6 @@ const HelpOutput = () => {
         <li><span className="text-green-400">about</span> - Display basic information</li>
         <li><span className="text-green-400">contact</span> - Show contact information</li>
         <li><span className="text-green-400">summary</span> - Display professional summary</li>
-        <li><span className="text-green-400">experience</span> - Show work experience</li>
         <li><span className="text-green-400">education</span> - Display educational background</li>
         <li><span className="text-green-400">skills</span> - List technical and soft skills</li>
         <li><span className="text-green-400">projects</span> - Show personal and professional projects</li>

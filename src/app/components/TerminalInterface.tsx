@@ -265,25 +265,6 @@ const OutputContent: React.FC<{
             )}
           </ul>
         </div>
-        
-        {/* Experience */}
-        <div>
-          <p className="text-yellow-500 font-bold">Work Experience:</p>
-          <ul className="pl-4 mt-1 space-y-2">
-            {resumeData.experience.map((exp, index) => (
-              <li key={index}>
-                <div className="font-bold">{exp.position} at {exp.company}</div>
-                <div className="text-gray-400">{exp.duration}</div>
-                <div className="mt-1">
-                  {exp.description.map((desc, i) => (
-                    <p key={i} className="mt-1">{desc}</p>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        
         {/* Education */}
         <div>
           <p className="text-yellow-500 font-bold">Education:</p>
