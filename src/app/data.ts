@@ -114,7 +114,7 @@ export const resumeData: ResumeData = {
     ],
     languages: ["HTML", "CSS", "JavaScript", "Java"],
     tools: [
-      "Git", "GitHub", "Cloudflare", "Netlify", "vercel", "Canva", 
+      "Git", "GitHub", "Cloudflare", "Netlify", "Vercel", "Canva",
       "Figma", "Google Docs", "PowerPoint", "MS Word", "Excel"
     ],
     soft: [
