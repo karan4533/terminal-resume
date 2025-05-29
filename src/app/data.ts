@@ -84,7 +84,7 @@ export const resumeData: ResumeData = {
       degree: "M.Tech Integrated",
       field: "Computer Science (Collaboration with Virtusa)",
       year: "Dec 2026 (Expected)",
-      gpa: "8.17/10"
+      gpa: "8.26/10"
     },
     {
       institution: "Navarasam Matriculation Higher Secondary School - Erode",
