@@ -84,7 +84,7 @@ export const resumeData: ResumeData = {
       degree: "M.Tech Integrated",
       field: "Computer Science (Collaboration with Virtusa)",
       year: "Dec 2026 (Expected)",
-      gpa: "8.26/10"
+      gpa: "8.40/10"
     },
     {
       institution: "Navarasam Matriculation Higher Secondary School - Erode",
@@ -112,7 +112,7 @@ export const resumeData: ResumeData = {
       "API Integration",
       "Responsive Design"
     ],
-    languages: ["HTML", "CSS", "JavaScript", "Java"],
+    languages: ["HTML", "CSS", "JavaScript", "Java", "python"],
     tools: [
       "Git", "GitHub", "Cloudflare", "Netlify", "Vercel", "Canva",
       "Figma", "Google Docs", "PowerPoint", "MS Word", "Excel"
