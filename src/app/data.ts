@@ -134,11 +134,7 @@ export const resumeData: ResumeData = {
       description: "Student Management System for enrollment, attendance, and user management with an intuitive interface for efficient data handling and reports.",
       technologies: ["Software Project Management", "Database", "User Interface Design"],
     },
-    {
-      name: "Intravenous Flow Monitor",
-      description: "System to measure and regulate the flow rate of IV fluids, ensuring precise delivery of fluids into the bloodstream via an IV catheter.",
-      technologies: ["Engineering", "Medical Technology", "Flow Monitoring"]
-    }
+
   ],
   certificates: [
     {
