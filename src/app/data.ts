@@ -65,76 +65,85 @@ export const resumeData: ResumeData = {
     linkedin: "linkedin.com/in/karan45",
     github: "github.com/karan4533"
   },
-  summary: "Enthusiastic and adaptable fresher seeking opportunities to apply and expand skills in a dynamic, team-oriented environment. Passionate about continuous learning, problem solving, and effective contribution to organizational success.",
+  summary: "An innovative and adaptable Computer Science student with strong technical and analytical skills, focused on solving real-world problems through innovative technology solutions. Passionate about AI/ML Engineering, continuous learning, and building impactful products through effective developer development.",
   experience: [
     {
-      company: "Summer Internship",
-      position: "Intern",
-      duration: "June 2024 - July 2024",
+      company: "Automating Logical Volume Management Across Distributed Servers in Data Centers",
+      position: "Summer Internship Project / Digital Fortress by Sify Chakkavarthy",
+      duration: "May 2024 - July 2024",
       description: [
-        "Developed a web-based tool for managing logical volumes in distributed data centers",
-        "Automated storage management, optimizing resource utilization and system efficiency",
-        "Integrated real-time dashboards, storage alerts, and performance monitoring features"
+        "Developed a web-based tool to manage logical volumes across distributed data centers.",
+        "Automated storage workflows, improving resource utilization and system efficiency.",
+        "Integrated real-time dashboards, storage alerts, and performance monitoring modules.",
+        "GitHub: Project Link"
+      ]
+    },
+    {
+      company: "Automating PDF to XML Extraction Tool",
+      position: "Industrial Training at GCS Information Services India Pvt. Ltd.",
+      duration: "August 2025 - Present",
+      description: [
+        "Developed a robust PDF-to-XML extraction tool using Python 3.13 and Streamlit, capable of processing large PDF files with accurate text and table extraction.",
+        "Implemented advanced parsing using pdfplumber, PyMuPDF, camelot-py, tabula-py, and integrated OCR (tesseract-py) for reliable data extraction and text normalization.",
+        "Designed a scalable backend with modular architecture supporting server file paths and uploads, featuring progress tracking, session management, and advanced error handling.",
+        "GitHub: Project Link"
       ]
     }
   ],
   education: [
     {
-      institution: "Vellore Institute of Technology - Andhra Pradesh",
-      degree: "M.Tech Integrated",
-      field: "Computer Science (Collaboration with Virtusa)",
-      year: "Dec 2026 (Expected)",
-      gpa: "8.40/10"
-    },
-    {
-      institution: "Navarasam Matriculation Higher Secondary School - Erode",
-      degree: "Higher Secondary Education",
+      institution: "Vellore Institute of Technology, Andhra Pradesh",
+      degree: "M.Tech Integrated in Computer Science",
       field: "Computer Science",
-      year: "March 2021",
-      gpa: "82.3%"
+      year: "Sept 2021 - Present",
+      gpa: "CGPA: 8.26/10"
     },
     {
-      institution: "Navarasam Matriculation Higher Secondary School - Erode",
-      degree: "Secondary School Education",
+      institution: "Navarasam Matriculation Higher Secondary School, Erode",
+      degree: "Higher Secondary (Computer Science)",
+      field: "Computer Science",
+      year: "2020 - 2021",
+      gpa: "Percentage: 82.3%"
+    },
+    {
+      institution: "Navarasam Matriculation Higher Secondary School, Erode",
+      degree: "Secondary School (SSLC)",
       field: "SSLC",
-      year: "March 2019",
-      gpa: "73%"
+      year: "2018 - 2019",
+      gpa: "Percentage: 73%"
     }
   ],
   skills: {
     technical: [
-      "HTML/CSS", 
-      "JavaScript", 
-      "Svelte", 
-      "React.js", 
-      "Hono.js", 
-      "Java", 
-      "API Integration",
-      "Responsive Design"
+      "Programming: Python, Java, JavaScript, TypeScript",
+      "Frontend: React.js, Next.js, Svelte, Tailwind CSS, HTML",
+      "Backend: Hono.js, RESTful APIs, FastAPI, LlamaIndex",
+      "Databases: MySQL, PostgreSQL, MongoDB, Firebase, Redis, Neo4j",
+      "Tools: GitHub, Docker, Cloudflare, Supabase, Vercel, Canva, Tableau, Power BI, QuickSight"
     ],
-    languages: ["HTML", "CSS", "JavaScript", "Java", "python"],
+    languages: ["Python", "Java", "JavaScript", "TypeScript"],
     tools: [
-      "Git", "GitHub", "Cloudflare", "Netlify", "Vercel", "Canva",
-      "Figma", "Google Docs", "PowerPoint", "MS Word", "Excel"
+      "GitHub", "Docker", "Cloudflare", "Supabase", "Vercel", "Canva", 
+      "Tableau", "Power BI", "QuickSight"
     ],
     soft: [
-      "Communication", "Problem-Solving", "Time Management", 
-      "Adaptability", "Teamwork"
+      "Team Collaboration", "Creative Problem Solving", "Communication", 
+      "Time Management"
     ]
   },
   projects: [
     {
-      name: "Automating Logical Volume Management",
-      description: "A web-based tool for managing logical volumes in distributed data centers, optimizing resource utilization with real-time dashboards and performance monitoring.",
-      technologies: ["Web Development", "Storage Management", "Performance Monitoring"],
-      link: "github.com/karan4533"
+      name: "Hackathon Registration & Management System (Team Project)",
+      description: "Developed a complete hackathon registration platform using Hono.js and hosted on Cloudflare. Implemented backend event modules, email verification, and enabled organizers to expedite approval/rejections (July 2024 - Jul 2025)",
+      technologies: ["Hono.js", "Cloudflare", "Email Verification"],
+      link: "GitHub: Project Link"
     },
     {
-      name: "Attendance Management System",
-      description: "Student Management System for enrollment, attendance, and user management with an intuitive interface for efficient data handling and reports.",
-      technologies: ["Software Project Management", "Database", "User Interface Design"],
-    },
-
+      name: "Private LLM RAG Application",
+      description: "Developed a secure, enterprise-focused, and 100% offline-capable LLM system using FastAPI and LlamaIndex. Implemented document ingestion, chunking, embeddings, and context-aware Q&A entirely without internet dependence. (Feb 2025 - Present)",
+      technologies: ["FastAPI", "LlamaIndex", "RAG", "Embeddings"],
+      link: "GitHub: Project Link"
+    }
   ],
   certificates: [
     {
@@ -143,19 +152,14 @@ export const resumeData: ResumeData = {
       date: "2022"
     },
     {
-      name: "Bootcamp on LLM Security",
+      name: "Full Stack Development - AI Integrated",
+      issuer: "SkillAce (March 18, 2025)",
+      date: "March 2025"
+    },
+    {
+      name: "Bootcamp on LLM Security (2025-2026)",
       issuer: "Null Vijayawada",
       date: "2025-2026"
-    },
-    {
-      name: "Mobile Application Development",
-      issuer: "Blockchain Club",
-      date: "2023"
-    },
-    {
-      name: "MATLAB Onramp",
-      issuer: "Training Course",
-      date: "2023"
     },
     {
       name: "Cybersecurity: Vulnerability Assessment and Patch Management",
@@ -163,9 +167,9 @@ export const resumeData: ResumeData = {
       date: "2024"
     },
     {
-      name: "Institute of Language Management",
-      issuer: "Language Institute",
-      date: "2016-2017"
+      name: "Letter of Recommendation",
+      issuer: "Web Development for Sarvekars Conference, VIT-AP (May 2023 - Dr. Subhash Muthu Prabhu)",
+      date: "May 2023"
     }
   ]
 };
