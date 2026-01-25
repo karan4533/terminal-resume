@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { initTerminalRenderer } from './wasm-loader';
+import { initTerminalRenderer, type TerminalRendererInstance } from './wasm-loader';
 
 interface TerminalRendererProps {
   width?: number;
@@ -21,7 +21,7 @@ export const TerminalRenderer: React.FC<TerminalRendererProps> = ({
   cursorPosition = [0, 0],
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rendererRef = useRef<any>(null);
+  const rendererRef = useRef<TerminalRendererInstance | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Initialize the renderer on mount
@@ -75,15 +75,16 @@ export const TerminalRenderer: React.FC<TerminalRendererProps> = ({
 
   // Function to render terminal content
   const renderContent = () => {
-    if (!rendererRef.current) return;
+    const renderer = rendererRef.current;
+    if (!renderer) return;
     
     // Clear terminal
-    rendererRef.current.clear(0.1, 0.1, 0.1, 1.0);
+    renderer.clear(0.1, 0.1, 0.1, 1.0);
     
     // Render each line of content
     content.forEach((line, index) => {
       try {
-        rendererRef.current.draw_text(line, 5, 20 + index * 20, '#FFFFFF');
+        renderer.draw_text(line, 5, 20 + index * 20, '#FFFFFF');
       } catch (error) {
         console.error('Error rendering line:', error);
       }
@@ -92,8 +93,8 @@ export const TerminalRenderer: React.FC<TerminalRendererProps> = ({
     // Render prompt
     const promptY = 20 + content.length * 20;
     try {
-      rendererRef.current.draw_prompt(5, promptY, '#00FF00');
-      rendererRef.current.draw_text(prompt, 20, promptY, '#00FF00');
+      renderer.draw_prompt(5, promptY, '#00FF00');
+      renderer.draw_text(prompt, 20, promptY, '#00FF00');
     } catch (error) {
       console.error('Error rendering prompt:', error);
     }
@@ -103,7 +104,7 @@ export const TerminalRenderer: React.FC<TerminalRendererProps> = ({
     const cursorPixelX = 20 + prompt.length * 9 + cursorX * 9;
     const cursorPixelY = promptY + cursorY * 20;
     try {
-      rendererRef.current.draw_cursor(cursorPixelX, cursorPixelY, 9, 2, '#FFFFFF');
+      renderer.draw_cursor(cursorPixelX, cursorPixelY, 9, 2, '#FFFFFF');
     } catch (error) {
       console.error('Error rendering cursor:', error);
     }

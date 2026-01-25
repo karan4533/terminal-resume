@@ -1,18 +1,36 @@
 'use client';
 
-let wasmModule: any = null;
+// Type definitions for the WASM module
+export interface TerminalRendererClass {
+  new (canvasId: string): TerminalRendererInstance;
+}
+
+export interface TerminalRendererInstance {
+  init_shaders(): Promise<void>;
+  resize(width: number, height: number): void;
+  clear(r: number, g: number, b: number, a: number): void;
+  draw_prompt(x: number, y: number, color: string): void;
+  draw_text(text: string, x: number, y: number, color: string): void;
+  draw_cursor(x: number, y: number, width: number, height: number, color: string): void;
+}
+
+export interface WasmModule {
+  TerminalRenderer: TerminalRendererClass;
+}
+
+let wasmModule: WasmModule | null = null;
 let isLoading = false;
 let loadError: Error | null = null;
 
 // Function to dynamically import the Rust-generated WASM module
-export async function initTerminalRenderer() {
+export async function initTerminalRenderer(): Promise<WasmModule> {
   if (wasmModule) {
     return wasmModule;
   }
   
   if (isLoading) {
     // Wait until the module is loaded
-    return new Promise((resolve, reject) => {
+    return new Promise<WasmModule>((resolve, reject) => {
       const checkInterval = setInterval(() => {
         if (wasmModule) {
           clearInterval(checkInterval);

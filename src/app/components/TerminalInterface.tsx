@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback, KeyboardEvent } from 'react';
+import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
 import { resumeData, availableCommands } from '../data';
 
 // Command output type
@@ -16,7 +16,7 @@ const CommandOutput: React.FC<{
   output: React.ReactNode;
   timestamp: Date;
   prompt: string;
-}> = ({ command, output, timestamp, prompt }) => {
+}> = ({ command, output, prompt }) => {
   return (
     <div className="mb-2">
       <div className="flex">
@@ -345,7 +345,7 @@ const OutputContent: React.FC<{
   } else {
     return (
       <div className="text-red-500">
-        Command not found: {command}. Type 'help' to see available commands.
+        Command not found: {command}. Type &apos;help&apos; to see available commands.
       </div>
     );
   }
@@ -363,7 +363,7 @@ const TerminalInterface: React.FC = () => {
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [commandOutputs, setCommandOutputs] = useState<CommandEntry[]>([]);
   const [showWelcome, setShowWelcome] = useState<boolean>(true);
-  const [prompt, setPrompt] = useState<string>('$');
+  const prompt = '$';
   
   // Handle window resize
   // Auto-scroll to bottom on new command output
@@ -575,7 +575,7 @@ const TerminalInterface: React.FC = () => {
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
         <div className="text-gray-400 text-sm mx-auto">
-          {resumeData.name}'s Terminal
+          {resumeData.name}&apos;s Terminal
         </div>
       </div>
       
