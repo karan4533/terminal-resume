@@ -86,7 +86,7 @@ export const resumeData: ResumeData = {
         "Developed a robust PDF-to-XML extraction tool using Python 3.13 and Streamlit, capable of processing large PDF files with accurate text and table extraction.",
         "Implemented advanced parsing using pdfplumber, PyMuPDF, camelot-py, tabula-py, and integrated OCR (tesseract-py) for reliable data extraction and text normalization.",
         "Designed a scalable backend with modular architecture supporting server file paths and uploads, featuring progress tracking, session management, and advanced error handling.",
-        "Github link: https://github.com/GGS-work/xml"
+        "Github link:https://github.com/GGS-work/xml"
       ]
     }
   ],
