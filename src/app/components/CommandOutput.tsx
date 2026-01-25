@@ -307,7 +307,7 @@ const AllOutput: React.FC<{ resumeData: ResumeData }> = ({ resumeData }) => {
 const CommandNotFound: React.FC<{ command: string }> = ({ command }) => {
   return (
     <div className="text-red-400">
-      Command not found: {command}. Type <span className="text-green-400">help</span> to see available commands
+      Command not found: {command}. Type <span className="text-green-400">help</span> to see available commands.
     </div>
   );
 };
