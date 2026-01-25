@@ -75,18 +75,18 @@ export const resumeData: ResumeData = {
         "Developed a web-based tool to manage logical volumes across distributed data centers.",
         "Automated storage workflows, improving resource utilization and system efficiency.",
         "Integrated real-time dashboards, storage alerts, and performance monitoring modules.",
-        "GitHub: Project Link"
+      
       ]
     },
     {
       company: "Automating PDF to XML Extraction Tool",
-      position: "Industrial Training at GCS Information Services India Pvt. Ltd.",
+      position: "Industrial Training at GGS Information Services India Pvt.Ltd.",
       duration: "August 2025 - Present",
       description: [
         "Developed a robust PDF-to-XML extraction tool using Python 3.13 and Streamlit, capable of processing large PDF files with accurate text and table extraction.",
         "Implemented advanced parsing using pdfplumber, PyMuPDF, camelot-py, tabula-py, and integrated OCR (tesseract-py) for reliable data extraction and text normalization.",
         "Designed a scalable backend with modular architecture supporting server file paths and uploads, featuring progress tracking, session management, and advanced error handling.",
-        "GitHub: Project Link"
+  
       ]
     }
   ],
