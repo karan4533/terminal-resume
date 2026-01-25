@@ -142,7 +142,7 @@ export const resumeData: ResumeData = {
       name: "Private LLM RAG Application",
       description: "Developed a secure, enterprise-focused, and 100% offline-capable LLM system using FastAPI and LlamaIndex. Implemented document ingestion, chunking, embeddings, and context-aware Q&A entirely without internet dependence. (Feb 2025 - Present)",
       technologies: ["FastAPI", "LlamaIndex", "RAG", "Embeddings"],
-      link: "GitHub: Project Link"
+      link: "GitHub: https://github.com/karan4533/private-gpt"
     }
   ],
   certificates: [
