@@ -136,7 +136,7 @@ export const resumeData: ResumeData = {
       name: "Hackathon Registration & Management System (Team Project)",
       description: "Developed a complete hackathon registration platform using Hono.js and hosted on Cloudflare. Implemented backend event modules, email verification, and enabled organizers to expedite approval/rejections (July 2024 - Jul 2025)",
       technologies: ["Hono.js", "Cloudflare", "Email Verification"],
-      link: "GitHub: Project Link"
+      link: "GitHub: https://github.com/Sundararaman28/hackathon-main"
     },
     {
       name: "Private LLM RAG Application",
