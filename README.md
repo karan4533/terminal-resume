@@ -1,4 +1,4 @@
-# Terminal Resume
+# Terminal Resumessss
 
 An interactive terminal-style resume built with Next.js that allows users to explore your professional background using command-line interface.
 
