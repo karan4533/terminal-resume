@@ -11,7 +11,7 @@ export default function Home() {
         
         <footer className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-800 text-center text-gray-500 text-xs sm:text-sm">
           <p>
-            © {new Date().getFullYear()} | Interactive Terminal Resume
+            © {new Date().getFullYear()} | Interactive Terminal CV Resume
           </p>
           <p className="mt-1">
             Built with Next.js, React, and TailwindCSS
